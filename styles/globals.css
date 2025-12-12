@@ -135,15 +135,17 @@ body {
 /* -------------------------------------------------- */
 .watermark-overlay {
     pointer-events: none;
+    touch-action: none;
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1; /* <-- the required fix */
     background-image: url('/watermark.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: auto 1300px;
-    opacity: 0.08; /* adjust strength */
+    opacity: 0.08;
 }
+
 
 /* Hide Scrollbar */
 .no-scrollbar::-webkit-scrollbar {
