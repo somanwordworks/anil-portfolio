@@ -1,5 +1,5 @@
 export default function FloatingWhatsApp() {
-  const whatsappNumber = "919876543210"; // <-- replace with your number (no + sign)
+  const whatsappNumber = "919499999979"; // <-- replace with your number (no + sign)
 
   return (
     <a
