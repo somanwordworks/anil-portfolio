@@ -39,7 +39,7 @@ export default function Header() {
 
 
                 {/* Right side - Navigation */}
-                <nav className="flex flex-wrap md:flex items-center gap-5 text-sm">
+                <nav className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-5 text-sm">
 
                     {/* HOME PAGE ONLY → full navigation */}
                     {!isSchedulePage && !isGalleryPage && (
