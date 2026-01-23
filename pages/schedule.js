@@ -71,13 +71,29 @@ export default function Schedule() {
     }, []);
 
     // -----------------------------
-    // Generate calendar days
+    // Generate calendar days (FIXED)
     // -----------------------------
     useEffect(() => {
         const monthStart = startOfMonth(currentDate);
         const monthEnd = endOfMonth(currentDate);
-        setDays(eachDayOfInterval({ start: monthStart, end: monthEnd }));
+
+        const daysInMonth = eachDayOfInterval({
+            start: monthStart,
+            end: monthEnd,
+        });
+
+        // 0 = Sunday, 6 = Saturday
+        const startWeekday = monthStart.getDay();
+
+        // Add empty slots before day 1
+        const paddedDays = [
+            ...Array(startWeekday).fill(null),
+            ...daysInMonth,
+        ];
+
+        setDays(paddedDays);
     }, [currentDate]);
+
 
     // -----------------------------
     // Check if a date has ANY event (past or future)
@@ -154,20 +170,23 @@ export default function Schedule() {
                     </div>
 
                     <div className="grid grid-cols-7 gap-2 text-center mb-6 flex-shrink-0">
-                        {days.map((day) => (
+                        {days.map((day, idx) => (
                             <div
-                                key={day}
-                                onClick={() => handleDateClick(day)}
-                                className="p-3 border rounded relative hover:bg-gray-100 cursor-pointer"
+                                key={idx}
+                                onClick={() => day && handleDateClick(day)}
+                                className={`p-3 border rounded relative
+                ${day ? "hover:bg-gray-100 cursor-pointer" : "border-none"}
+            `}
                             >
-                                {format(day, "d")}
+                                {day && format(day, "d")}
 
-                                {hasEvent(day) && (
+                                {day && hasEvent(day) && (
                                     <span className="w-2 h-2 bg-saffron rounded-full absolute bottom-2 left-1/2 -translate-x-1/2"></span>
                                 )}
                             </div>
                         ))}
                     </div>
+
 
                     {/* 🔹 TABS */}
                     <div className="flex gap-4 mb-3 flex-shrink-0">
