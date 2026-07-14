@@ -83,7 +83,7 @@ body {
 }
 
 /* -------------------------------------------------- */
-/*  AUTO-SCROLL HORIZONTAL GALLERY ANIMATION (NEW)    */
+/*  AUTO-SCROLL HORIZONTAL GALLERY ANIMATION          */
 /* -------------------------------------------------- */
 
 @keyframes scroll-horizontal {
@@ -105,40 +105,40 @@ body {
 .bg-noise {
     background-image: url('/noise.png');
     background-repeat: repeat;
-    opacity: 1; /* noise visibility controlled per section */
+    opacity: 1;
 }
 
 .bg-noise-overlay {
     background-image: url('/noise.png');
     background-repeat: repeat;
-    opacity: 0.12; /* perfect subtle amount */
-}
-
-
-@keyframes press-scroll {
-    0% {
-        transform: translateY(100%);
-    }
-
-    100% {
-        transform: translateY(-100%);
-    }
-}
-
-.animate-press-scroll {
-    animation: press-scroll 45s linear infinite;
+    opacity: 0.12;
 }
 
 
 /* -------------------------------------------------- */
-/* GLOBAL WATERMARK � Single Centered Large Image     */
+/*  PRESS RELEASE VERTICAL SCROLL — SEAMLESS LOOP     */
+/*  Requires the JSX to render the list DOUBLED:      */
+/*  [...pressImages, ...pressImages]                  */
+/* -------------------------------------------------- */
+@keyframes press-scroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.animate-press-scroll {
+    animation: press-scroll 900s linear infinite;
+}
+
+
+/* -------------------------------------------------- */
+/* GLOBAL WATERMARK — Single Centered Large Image     */
 /* -------------------------------------------------- */
 .watermark-overlay {
     pointer-events: none;
     touch-action: none;
     position: fixed;
     inset: 0;
-    z-index: -1; /* <-- the required fix */
+    z-index: -1;
     background-image: url('/watermark.png');
     background-repeat: no-repeat;
     background-position: center center;

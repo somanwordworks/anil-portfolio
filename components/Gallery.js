@@ -21,9 +21,7 @@ export default function Gallery() {
                 <div className="text-sm text-slate-600">Moments with the people</div>
             </div>
 
-            {/* SCROLL WRAPPER */}
             <div className="relative w-full overflow-hidden">
-                {/* Desktop / Laptop – auto scroll */}
                 <div className="hidden md:flex animate-scroll gap-4 min-w-max">
                     {[...images, ...images].map((src, i) => (
                         <img
@@ -35,7 +33,6 @@ export default function Gallery() {
                     ))}
                 </div>
 
-                {/* Mobile / iOS / iPad – manual swipe */}
                 <div className="flex md:hidden gap-4 overflow-x-auto touch-pan-x">
                     {images.map((src, i) => (
                         <img

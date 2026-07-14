@@ -3,8 +3,14 @@ const nextConfig = {
     reactStrictMode: true,
 
     images: {
-        domains: ["images.unsplash.com"]
-    }
+        // ✅ Replaced deprecated `domains` with `remotePatterns`
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "images.unsplash.com",
+            },
+        ],
+    },
 };
 
 module.exports = nextConfig;
